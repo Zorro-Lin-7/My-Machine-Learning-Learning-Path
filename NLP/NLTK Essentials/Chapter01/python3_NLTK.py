@@ -20,9 +20,17 @@ print("Total number of tokens_by_re: {}".format(len(tokens_by_re)))
 print(tokens_by_re[:25])
 
 import nltk
-Freq_dist_nltk = nltk.FreqDist(tokens)
+Freq_dist_nltk = nltk.FreqDist(tokens)  # 词频统计
 print(Freq_dist_nltk)
 print("\n------------")
 for k, v in Freq_dist_nltk.items():
     print(str(k) + ':' + str(v))
-    
+
+# stopwords exist
+Freq_dist_nltk.plot(50, cumulative=False)
+
+# no stopwords
+# stopwords = [word.strip().lower() for word in open("PATH/english.stop.txt")]
+# clean_tokens = [tok for tok in tokens if len(tok.lower()) > 1 and (tok.lower() not in stopwords)]
+# Freq_dist_nltk = nltk.FreqDist(clean_tokens)
+# Freq_dist_nltk.plot(50, cumulative=False)

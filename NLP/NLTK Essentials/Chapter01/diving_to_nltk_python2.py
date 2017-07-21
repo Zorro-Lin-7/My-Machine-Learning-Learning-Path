@@ -22,7 +22,7 @@ print tokens[:20]
 
 # 上述方式可以用nltk 实现得更简洁
 
-# 词频排序-字典按value排序
+# 词频统计及排序-字典按value排序
 # python 方式：
 import operator
 freq_dis = {}
@@ -41,5 +41,9 @@ print Freq_dist_nltk
 print('\n--------------')
 for k, v in Freq_dist_nltk.items():
     print str(k) + ':' + str(v)
-    
-Freq_dist_nltk.plot(50, cumulative=False)
+
+# stopwords
+# stopwords = [word.strip().lower() for word in open("PATH/english.stop.txt")] # 需要停用词库
+# clean_tokens = [tok for tok in tokens if len(tok.lower()) > 1 and (tok.lower() not in stopwords]
+# Freq_dist_nltk = nltk.FreqDist(clean_tokens)    
+# Freq_dist_nltk.plot(50, cumulative=False)
