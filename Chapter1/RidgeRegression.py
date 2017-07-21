@@ -64,12 +64,12 @@ print("R2 score =", round(sm.r2_score(y_test, y_test_pred_ridge), 2))
 # Polynomial regression
 from sklearn.preprocessing import PolynomialFeatures
 
-polynomial = PolynomialFeatures(degree=3)
+polynomial = PolynomialFeatures(degree=3)  # 设置最高项次
 X_train_transformed = polynomial.fit_transform(X_train)  # to represent the datapoints in terms of the coefficients of the polynomial
-datapoint = [0.39, 2.78, 7.11]
-poly_datapoint = polynomial.fit_transform(datapoint)
+datapoint = [0.39, 2.78, 7.11]            # 给定新的数据点
+poly_datapoint = polynomial.fit_transform(datapoint) # 将新数据点做预处理
 
-poly_linear_model = linear_model.LinearRegression()
-poly_linear_model.fit(X_train_transformed, y_train)
+poly_linear_model = linear_model.LinearRegression()  # 线性回归
+poly_linear_model.fit(X_train_transformed, y_train)  # 拟合多元线性回归
 print("\nLinear regression:\n", linear_regressor.predict(datapoint)[0])
 print("\nPolynomial regression:\n", poly_linear_model.predict(poly_datapoint)[0])
