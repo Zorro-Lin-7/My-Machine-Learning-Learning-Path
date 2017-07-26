@@ -1,5 +1,5 @@
 import numpy as np
-import matplotlib.pyplot as plt
+import matplotlib.pyplo as plt
 from sklearn.naive_bayes import GaussianNB
 
 from LogisticRegression import plot_classifier
