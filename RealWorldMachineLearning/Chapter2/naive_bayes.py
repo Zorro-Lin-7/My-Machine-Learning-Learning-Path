@@ -40,3 +40,23 @@ accuracy = 100.0 * (y_test == y_test_pred).sum() / X_test.shape[0]
 print("Accuracy of the classifier_new = ", round(accuracy, 2), '%')
 
 plot_classifier(classifier_gaussiannb_new, X_test, y_test)
+
+############################################
+# Cross validation and scoring functions
+
+num_validations = 5
+accuracy = cross_validation.cross_val_score(classifier_gaussiannb,
+           X, y,scoring='accuracy', cv=num_validations)
+print("Accuracy: " + str(round(100*accuracy.mean(), 2)) + "%")
+
+f1 = cross_validation.cross_val_score(classifier_gaussiannb,
+           X, y, scoring='f1_weighted', cv=num_validations)
+print("F1 :" + str(round(100*f1.mean(), 2)) + '%')
+
+precision = cross_validation.cross_val_score(classifier_gaussiannb,
+           X, y, scoring='precision_weighted', cv=num_validations)
+print("Precision: " + str(round(100*precision.mean(), 2)) + "%")
+
+recall = cross_validation.cross_val_score(classifier_gaussiannb,
+           X, y, scoring='recall_weighted', cv=num_validations)
+print("Recall: " + str(round(100*recall.mean(), 2)) + "%")
